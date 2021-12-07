@@ -9,6 +9,11 @@ namespace EPCath_Marking
 {
     class QR_Creator
     {
+
+        public void QRCreating()
+        {
+            
+        }
         System.Drawing.Image Image;
         public void QR_saver (System.Drawing.Image QRimage)
         {
