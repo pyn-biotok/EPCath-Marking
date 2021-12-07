@@ -20,66 +20,37 @@ namespace EPCath_Marking
 {
     public partial class Form1 : Form
     {
-
-        
         public Form1()
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
-        
-      
+
         public void button1_Click(object sender, EventArgs e)
         {
      
 
+            // настраиваем дату истечения срока годности
+        DateTime data2 = new DateTime(Cath_Date1.Value.Year, Cath_Date1.Value.Month, Cath_Date1.Value.Day);
+        data2 =  data2.AddYears(2);
+        string Cath_Data2 = data2.Month.ToString() + "." + data2.Year.ToString();
 
-        DateTime date2 = new DateTime(Cath_Date1.Value.Year, Cath_Date1.Value.Month, Cath_Date1.Value.Day);
-        date2 =  date2.AddYears(2);
-           
-            string Cath_Date2 = date2.Month.ToString() + "." + date2.Year.ToString();
+            // создаем объект Data, там хранятся все даныне на конкретный лист стикера
+        Data data = new Data(Cath_FirstSN.Text, Cath_LOT.Text, Cath_REF.Text, Cath_Date1.Text, Cath_Data2);
 
-           
+       
+        
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            PDF_Sticker stick = new PDF_Sticker();
+            // создаем страницу (стикер) PDF документа
+        PDF_Sticker stick = new PDF_Sticker();
+         
+            stick.PDF_Sticker_Creator(data, Cath_QTY.Text);
           
-            stick.DataChecking(Cath_LOT.Text, Cath_QTY.Text);
-            int SN = Convert.ToInt32(Cath_FirstSN.Text);
-            int QTY = Convert.ToInt32(Cath_QTY.Text);
+           
             // передаем в метод генератора QR кода необходимые данные
            // pictureBox1.Image = stick.QR_Generator(Cath_REF.Text, Cath_LOT.Text, SN, Cath_Date1.Text, Cath_Date2, QTY);
+         
             
-            // сохранение QR кода как картинки 
-            QR_Creator QR_Code = new QR_Creator();
-           QR_Code.QR_saver(pictureBox1.Image);
-
-            // создание pdf документа 
-            
-           //
-           stick.pdf_creator(Cath_REF.Text, Cath_LOT.Text, SN, Cath_Date1.Text, Cath_Date2, QTY);
-           //stick.DataChecking();
-
-            // MessageBox.Show("Создался PDF документ");
-
 
         }
 
