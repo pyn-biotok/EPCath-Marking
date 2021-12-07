@@ -23,8 +23,10 @@ namespace EPCath_Marking
         public Form1()
         {
             InitializeComponent();
+          
         }
 
+       
 
         public void button1_Click(object sender, EventArgs e)
         {
@@ -47,10 +49,6 @@ namespace EPCath_Marking
             stick.PDF_Sticker_Creator(data, Cath_QTY.Text);
           
            
-            // передаем в метод генератора QR кода необходимые данные
-           // pictureBox1.Image = stick.QR_Generator(Cath_REF.Text, Cath_LOT.Text, SN, Cath_Date1.Text, Cath_Date2, QTY);
-         
-            
 
         }
 
@@ -100,6 +98,47 @@ ToolTip t = new ToolTip();
             if (Char.IsDigit(e.KeyChar)) return;
             else
                 e.Handled = true;
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Cath_QTY_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void Cath_QTY_Validating(object sender, CancelEventArgs e)
+        {
+            if (Cath_QTY.Text.Length != 0)
+            {
+                progressBar1.PerformStep();
+            }
+            else progressBar1.Value -= progressBar1.Step;
+        }
+
+        private void Cath_Date1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Cath_REF_Validating(object sender, CancelEventArgs e)
+        {
+            if (Cath_REF.Text.Length != 0)
+            {
+                
+                progressBar1.PerformStep();
+
+            }
+            else progressBar1.Step -= progressBar1.Step;
+
         }
     }
 }
