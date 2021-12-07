@@ -55,7 +55,7 @@ namespace EPCath_Marking
            // pictureBox1.Image = stick.QR_Generator(Cath_REF.Text, Cath_LOT.Text, SN, Cath_Date1.Text, Cath_Date2, QTY);
             
             // сохранение QR кода как картинки 
-            QR_Save QR_Code = new QR_Save();
+            QR_Creator QR_Code = new QR_Creator();
            QR_Code.QR_saver(pictureBox1.Image);
 
             // создание pdf документа 
