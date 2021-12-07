@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace EPCath_Marking
 {
-    class QR_Save
+    class QR_Creator
     {
         System.Drawing.Image Image;
         public void QR_saver (System.Drawing.Image QRimage)
