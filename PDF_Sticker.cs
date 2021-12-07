@@ -14,95 +14,53 @@ using QRCoder;
 
 namespace EPCath_Marking
 {
-  
-    class PDF_Sticker
+
+
+    public class PDF_Sticker
     {
-        private string SN_Text;
-        // переменная, где будет храниться сгенеренный QR код 
-        private System.Drawing.Image QRimage;
+        public string disk = "E";
+        System.Drawing.Image QRImage;
 
-        // переменная пути, где будет сохраняться pdf документ
-        public string path;
-        public string LOT, REF, DATA1, DATA2;
-        int SN, QTY;
-
-        public int DataChecking(string _LOT, string _QTY)
+       public void PDF_Sticker_Creator(Data d, string QTY)
         {
-            try
-            {
-                if (_LOT != null)
+            // прописываем путь и имя PDF файла для сохранения
+            string path = disk + ":/" + d.REF + "_" + d.DATA1 + ".pdf";
 
-                    return 1;   
-                
-
-
-
-            }
-            catch
-            {
-                if (_LOT == null)
-
-                     System.Windows.Forms.MessageBox.Show("Невозможно сохранить изображение", "Ошибка",
-                  MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
-
-            }
-            return 1;
-        }
-        // метод генерирования QR кода
-        public void pdf_creator(string i_REF, string i_LOT, int i_SN, string i_Data1, string i_Data2, int i_QTY)
-        {
-            LOT = i_LOT;
-            REF = i_REF;
-            SN = i_SN;
-            DATA1 = i_Data1;
-            DATA2 = i_Data2;
-            QTY = i_QTY;
-           // DataChecking();
-            pfdListData_creator();
-
-            
-        }
-
-        public void pfdListData_creator()
-        {
-            // прописываем путь сохранения pdf докумета
-            path = "D:/" + REF + "_" + DATA1 + ".pdf";
-
-            // создаем страницу формата А4
+            // тут короче создается PDF документ и вся херня
             Document pdfdoc = new Document(iTextSharp.text.PageSize.A4, 1, 1, 1, 1);
             PdfWriter.GetInstance(pdfdoc, new FileStream(path, FileMode.Create));
-
-            // меняем размеры страницы под размеры стикера (нужный размер в дюймах умножаем на 72)
             pdfdoc.SetPageSize(new iTextSharp.text.Rectangle(0, 0, 122, 71));
 
-            // открываем документ
             pdfdoc.Open();
 
-            int i ;
-            for (i = 1; i <= QTY; i++)
+            // пошли костыли!!
+            int i;
+            int _SN = Int32.Parse(d.SN);
+            for (i = 1; i <= Int32.Parse(QTY); i++)
             {
-                
-                CreatePDFListData(SN);
+                QR_Creator qr = new QR_Creator();
+                QRImage = qr.QR_Generator(d);
+
+                CreatePDFListData(_SN, QRImage);
                 pdfdoc.NewPage();
-                SN++;
+                _SN++;
+
             }
-           
+
+
 
             pdfdoc.Close();
             System.Diagnostics.Process.Start(path);
 
 
-            void CreatePDFListData(int i_SN)
+            void CreatePDFListData(int SN, System.Drawing.Image QRCode)
             {
-                SN = i_SN;
-                                         
-                             
-                QR_Generator();
+
+
                 // получаем сгенерированную картинку QR кода, конвертируем в iTextSharp.text.Image    
-                iTextSharp.text.Image QRPic = iTextSharp.text.Image.GetInstance(QRimage, System.Drawing.Imaging.ImageFormat.Bmp);
+                iTextSharp.text.Image QRPic = iTextSharp.text.Image.GetInstance(QRCode, System.Drawing.Imaging.ImageFormat.Bmp);
                 QRPic.ScaleAbsolute(40f, 40f);
-                QRPic.SetAbsolutePosition(pdfdoc.PageSize.Width - QRPic.Width + 35f, pdfdoc.PageSize.Height - QRPic.Height +35f);
+                QRPic.SetAbsolutePosition(pdfdoc.PageSize.Width - QRPic.Width + 35f, pdfdoc.PageSize.Height - QRPic.Height + 35f);
 
                 // - QRPic.Width + 1f
                 // - QRPic.Height
@@ -111,9 +69,9 @@ namespace EPCath_Marking
                 float spack = 2f;
 
                 Phrase c3 = new Phrase();
-                c3 = Pic_Text("D:/SN.bmp", SN_Text);
+                c3 = Pic_Text(disk + ":/SN.bmp", SN.ToString());
                 Phrase c4 = new Phrase();
-                c4 = Pic_Text("D:/LOT.bmp", LOT);
+                c4 = Pic_Text(disk +":/LOT.bmp", d.LOT);
 
                 Phrase c5 = new Phrase("   ");
 
@@ -127,7 +85,7 @@ namespace EPCath_Marking
 
 
                 Phrase c6 = new Phrase();
-                c6 = Pic_Text("D:/REF.bmp", REF);
+                c6 = Pic_Text(disk + ":/REF.bmp", d.REF);
                 Paragraph par4 = new Paragraph();
                 par4.SpacingBefore = spack;
                 par4.SpacingAfter = spack;
@@ -137,9 +95,9 @@ namespace EPCath_Marking
 
 
                 Phrase c1 = new Phrase();
-                c1 = Pic_Text("D:/DATA1.bmp", DATA1);
+                c1 = Pic_Text(disk + ":/DATA1.bmp", d.DATA1);
                 Phrase c2 = new Phrase();
-                c2 = Pic_Text("D:/DATA2.bmp", DATA2);
+                c2 = Pic_Text(disk + ":/DATA2.bmp", d.DATA2);
                 Phrase c7 = new Phrase("   ");
 
                 Paragraph par1 = new Paragraph();
@@ -150,117 +108,81 @@ namespace EPCath_Marking
                 par1.Add(c2);
                 pdfdoc.Add(par1);
 
-             
-
-                
-                
 
 
-                
-               
+
+
+
+
+
+
 
 
 
             }
-           
 
-            void QR_Generator()
+
+
+
+
+        }
+
+
+
+        Phrase Pic_Text(string path, string info)
+        {
+            iTextSharp.text.Image Pic = iTextSharp.text.Image.GetInstance(path);
+
+            switch (path)
             {
+                case "E:/LOT.bmp":
+                    Pic.ScaleAbsolute(15.5f, 11.2f);
+                    break;
 
-               
-               
+                case "E:/REF.bmp":
+                    Pic.ScaleAbsolute(15.5f, 11.2f);
+                    break;
 
-                switch (SN)
-                    {
+                case "E:/SN.bmp":
+                    Pic.ScaleAbsolute(15.5f, 11.2f);
+                    break;
 
-                    case int i1 when i1 >= 1  && i1 <= 9:
-                        SN_Text = "00" + SN.ToString();
-                                              
-                        break;
+                case "E:/DATA1.bmp":
+                    Pic.ScaleAbsolute(12.6f, 12.6f);
+                    break;
 
-                    case int i1 when i1 >= 10 && i1 <= 99:
-                        SN_Text = "0" + SN.ToString();
-
-                        break;
-
-                    case int i1 when i1 >= 100 && i1 <= 999:
-                        SN_Text =  SN.ToString();
-
-                        break;
-
-                }
-
-                //  формируем строку, которая запишется в QR код
-                string QR_info = REF + "/" + LOT + "/" + SN_Text + "/" + DATA1 + "/" + DATA2;
-
-                QRCodeGenerator qr = new QRCodeGenerator();
-                QRCodeData data = qr.CreateQrCode(QR_info, QRCodeGenerator.ECCLevel.Q);
-                QRCode code = new QRCode(data);
-
-                QRimage = code.GetGraphic(2);
-                
-
-                // return QRimage;
-
-
+                case "E:/DATA2.bmp":
+                    Pic.ScaleAbsolute(10.1f, 13.8f);
+                    break;
             }
-            
-          
-
-            Phrase Pic_Text(string path, string info)
-            {
-                iTextSharp.text.Image Pic = iTextSharp.text.Image.GetInstance(path);
-                
-                switch (path)
-                {
-                    case "D:/LOT.bmp":
-                        Pic.ScaleAbsolute(15.5f, 11.2f);
-                        break;
-
-                    case "D:/REF.bmp":
-                        Pic.ScaleAbsolute(15.5f, 11.2f);
-                        break;
-
-                    case "D:/SN.bmp":
-                        Pic.ScaleAbsolute(15.5f, 11.2f);
-                        break;
-
-                    case "D:/DATA1.bmp":
-                        Pic.ScaleAbsolute(12.6f, 12.6f);
-                        break;
-
-                    case "D:/DATA2.bmp":
-                        Pic.ScaleAbsolute(10.1f, 13.8f);
-                        break;
-                }
-               
-                
-               
-
-                Chunk pic = new Chunk(Pic, 0, 0);
-                Chunk tab = new Chunk(" ");
-                Chunk text = new Chunk(info, FontFactory.GetFont("arial", (float) 7f,  Font.UNDERLINE));
-                Phrase PicText = new Phrase();
-                PicText.Add(pic);
-                PicText.Add(tab);
-                PicText.Add(text);
 
 
 
 
-                return PicText;
+            Chunk pic = new Chunk(Pic, 0, 0);
+            Chunk tab = new Chunk(" ");
+            Chunk text = new Chunk(info, FontFactory.GetFont("arial", (float)7f, Font.UNDERLINE));
+            Phrase PicText = new Phrase();
+            PicText.Add(pic);
+            PicText.Add(tab);
+            PicText.Add(text);
+
+
+
+
+            return PicText;
 
 
 
 
 
-            }
+        }
+    }
+}
          
            
                 
        
-        }
+      
 
 
-    }
-}

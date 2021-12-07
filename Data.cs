@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace EPCath_Marking
 {
-    class Data
+   public class Data
     {
         public string LOT, REF, SN, DATA1, DATA2;
 
-        public void DataList(string _SN, string _LOT, string _REF, string _DATA1, string _DATA2)
+        public Data(string _SN, string _LOT, string _REF, string _DATA1, string _DATA2)
         {
             LOT = _LOT;
             SN = _SN;
@@ -18,5 +18,6 @@ namespace EPCath_Marking
             DATA1 = _DATA1;
             DATA2 = _DATA2;
         }
+       
     }
 }
