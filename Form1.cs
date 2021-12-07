@@ -32,22 +32,36 @@ namespace EPCath_Marking
       
         public void button1_Click(object sender, EventArgs e)
         {
-            
-        //this.StartPosition = FormStartPosition.CenterScreen;  //  форма в цендре окна
+     
 
 
         DateTime date2 = new DateTime(Cath_Date1.Value.Year, Cath_Date1.Value.Month, Cath_Date1.Value.Day);
-            date2 =  date2.AddYears(2);
+        date2 =  date2.AddYears(2);
+           
+            string Cath_Date2 = date2.Month.ToString() + "." + date2.Year.ToString();
+
            
 
-            ResourceManager rm = Resources.ResourceManager;
-            Bitmap myImage = (Bitmap)rm.GetObject("REF");
-            pictureBox1.Image = myImage;
 
 
-            string Cath_Date2 = date2.Month.ToString() + "." + date2.Year.ToString();
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             PDF_Sticker stick = new PDF_Sticker();
+          
             stick.DataChecking(Cath_LOT.Text, Cath_QTY.Text);
             int SN = Convert.ToInt32(Cath_FirstSN.Text);
             int QTY = Convert.ToInt32(Cath_QTY.Text);
