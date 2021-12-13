@@ -43,9 +43,10 @@ namespace EPCath_Marking
             for (i = 1; i <= Int32.Parse(QTY); i++)
             {
                 QR_Creator qr = new QR_Creator();
+                d.SN = _SN.ToString();
                 QRImage = qr.QR_Generator(d);
 
-                CreatePDFListData(_SN, QRImage);
+                CreatePDFListData(d.SN, QRImage);
                 pdfdoc.NewPage();
                 _SN++;
 
@@ -56,7 +57,7 @@ namespace EPCath_Marking
             System.Diagnostics.Process.Start(path);
 
 
-            void CreatePDFListData(int SN, System.Drawing.Image QRCode)
+            void CreatePDFListData(string SN, System.Drawing.Image QRCode)
             {
 
 

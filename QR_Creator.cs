@@ -15,15 +15,15 @@ namespace EPCath_Marking
 
         public System.Drawing.Image QR_Generator(Data d)
         {
-            // это строка, которая будет записана в QR код
-            string DataText = d.REF + "/" + d.LOT + "/" + d.SN + "/" + d.DATA1 + "/" + d.DATA2;
+           
 
             // задаем параметр для позиции SN в зависимости от введенного значения (формат SN: ХХХ)
+
             switch (Int32.Parse(d.SN))
             {
 
                 case int i1 when i1 >= 1 && i1 <= 9:
-                    d.SN = "00" + d.SN;
+                    d.SN = "00" + d.SN ;
 
                     break;
 
@@ -33,6 +33,8 @@ namespace EPCath_Marking
                     break;
 
             }
+            // это строка, которая будет записана в QR код
+            string DataText = d.REF + "/" + d.LOT + "/" + d.SN + "/" + d.DATA1 + "/" + d.DATA2;
 
 
             QRCodeGenerator qr = new QRCodeGenerator();

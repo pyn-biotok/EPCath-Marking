@@ -9,6 +9,7 @@ namespace EPCath_Marking
    public class Data
     {
         public string LOT, REF, SN, DATA1, DATA2;
+       
 
         public Data(string _SN, string _LOT, string _REF, string _DATA1, string _DATA2)
         {
