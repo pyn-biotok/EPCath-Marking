@@ -21,7 +21,7 @@ namespace EPCath_Marking
        
         System.Drawing.Image QRImage;
 
-        public static string DiskName = Environment.CurrentDirectory.ToString();
+        public string DiskName = Environment.CurrentDirectory.ToString();
 
      
         public void PDF_Sticker_Creator(Data d, string QTY)
@@ -37,7 +37,7 @@ namespace EPCath_Marking
 
             pdfdoc.Open();
 
-            // пошли костыли!!
+            
             int i;
             int _SN = Int32.Parse(d.SN);
             for (i = 1; i <= Int32.Parse(QTY); i++)
@@ -50,7 +50,6 @@ namespace EPCath_Marking
                 _SN++;
 
             }
-
 
 
             pdfdoc.Close();
@@ -66,13 +65,11 @@ namespace EPCath_Marking
                 QRPic.ScaleAbsolute(40f, 40f);
                 QRPic.SetAbsolutePosition(pdfdoc.PageSize.Width - QRPic.Width + 35f, pdfdoc.PageSize.Height - QRPic.Height + 35f);
 
-                // - QRPic.Width + 1f
-                // - QRPic.Height
-                pdfdoc.Add(QRPic);
+                 pdfdoc.Add(QRPic);
 
                 float spack = 2f;
                  
-        Phrase c3 = new Phrase();
+             Phrase c3 = new Phrase();
                 c3 = Pic_Text(DiskName + "/SN.bmp", SN.ToString());
                 Phrase c4 = new Phrase();
                 c4 = Pic_Text(DiskName + "/LOT.bmp", d.LOT);
@@ -95,7 +92,6 @@ namespace EPCath_Marking
                 par4.SpacingAfter = spack;
                 par4.Add(c6);
                 pdfdoc.Add(par4);
-
 
 
                 Phrase c1 = new Phrase();
