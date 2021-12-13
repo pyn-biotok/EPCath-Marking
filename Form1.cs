@@ -23,13 +23,7 @@ namespace EPCath_Marking
         public Form1()
         {
             InitializeComponent();
-      
-          
-
-           
-      
-
-
+                
         }
 
        
@@ -37,7 +31,6 @@ namespace EPCath_Marking
         public void button1_Click(object sender, EventArgs e)
         {
      
-
             // настраиваем дату истечения срока годности
         DateTime data2 = new DateTime(Cath_Date1.Value.Year, Cath_Date1.Value.Month, Cath_Date1.Value.Day);
         data2 =  data2.AddYears(2);
@@ -45,88 +38,22 @@ namespace EPCath_Marking
 
             // создаем объект Data, там хранятся все даныне на конкретный лист стикера
         Data data = new Data(Cath_FirstSN.Text, Cath_LOT.Text, Cath_REF.Text, Cath_Date1.Text, Cath_Data2);
-
-       
-        
-
+                          
             // создаем страницу (стикер) PDF документа
         PDF_Sticker stick = new PDF_Sticker();
-         
-            stick.PDF_Sticker_Creator(data, Cath_QTY.Text);
-          
-           
-
+        stick.PDF_Sticker_Creator(data, Cath_QTY.Text);
+                     
         }
 
-        private void Date_of_prod_ValueChanged(object sender, EventArgs e)
-        {
-            //  задаем пользовательскую фрму даты и времени
-            
-            Cath_Date1.Format = DateTimePickerFormat.Custom; 
-            Cath_Date1.CustomFormat = "MM.yyyy";
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void Cath_LOT_MouseEnter(object sender, EventArgs e)
         {
-
-            
-ToolTip t = new ToolTip();
+                        
+        ToolTip t = new ToolTip();
             t.SetToolTip(Cath_LOT, "Формат кода партии: ХХХ ");
 
         }
 
-        private void Cath_FirstSN_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            {
-
-                if (Char.IsDigit(e.KeyChar)) return;
-                else
-                    e.Handled = true;
-            }
-        }
-
-        private void Cath_QTY_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-            if (Char.IsDigit(e.KeyChar)) return;
-            else
-                e.Handled = true;
-        }
-
-        private void Cath_LOT_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-            if (Char.IsDigit(e.KeyChar)) return;
-            else
-                e.Handled = true;
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Cath_QTY_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-           
-        }
-
-       
-
-        private void Cath_Date1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
        
     }
 }

@@ -75,7 +75,7 @@ namespace EPCath_Marking
             this.Cath_LOT.Name = "Cath_LOT";
             this.Cath_LOT.Size = new System.Drawing.Size(116, 22);
             this.Cath_LOT.TabIndex = 6;
-            this.Cath_LOT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cath_LOT_KeyPress);
+        
             this.Cath_LOT.MouseEnter += new System.EventHandler(this.Cath_LOT_MouseEnter);
             // 
             // Cath_REF
@@ -110,7 +110,7 @@ namespace EPCath_Marking
             this.label2.Size = new System.Drawing.Size(212, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Вариант исполнения катетера:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+          
             // 
             // label4
             // 
@@ -130,8 +130,8 @@ namespace EPCath_Marking
             this.Cath_Date1.Name = "Cath_Date1";
             this.Cath_Date1.Size = new System.Drawing.Size(109, 20);
             this.Cath_Date1.TabIndex = 11;
-            this.Cath_Date1.ValueChanged += new System.EventHandler(this.Cath_Date1_ValueChanged);
-            this.Cath_Date1.Enter += new System.EventHandler(this.Date_of_prod_ValueChanged);
+       
+           
             // 
             // Cath_QTY
             // 
@@ -140,9 +140,7 @@ namespace EPCath_Marking
             this.Cath_QTY.Name = "Cath_QTY";
             this.Cath_QTY.Size = new System.Drawing.Size(60, 22);
             this.Cath_QTY.TabIndex = 12;
-            this.Cath_QTY.TextChanged += new System.EventHandler(this.Cath_QTY_TextChanged);
-            this.Cath_QTY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cath_QTY_KeyPress);
-            // 
+         
             // label5
             // 
             this.label5.AutoSize = true;
@@ -170,7 +168,7 @@ namespace EPCath_Marking
             this.Cath_FirstSN.Name = "Cath_FirstSN";
             this.Cath_FirstSN.Size = new System.Drawing.Size(51, 22);
             this.Cath_FirstSN.TabIndex = 15;
-            this.Cath_FirstSN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cath_FirstSN_KeyPress);
+         
             // 
             // errorProviderLOT
             // 
@@ -201,7 +199,7 @@ namespace EPCath_Marking
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EPCath Sticker Generator";
-            this.Load += new System.EventHandler(this.Form1_Load);
+         
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLOT)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
