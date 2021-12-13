@@ -22,5 +22,11 @@ namespace EPCath_Marking
             Form1 SC = new Form1();
             SC.Show();
         }
+
+        private void открытьБазуДанныхToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EPCath_DataBase CDB = new EPCath_DataBase();
+            CDB.Show();
+        }
     }
 }

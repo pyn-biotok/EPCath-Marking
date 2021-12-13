@@ -34,6 +34,7 @@ namespace EPCath_Marking
             this.информационныйСтикерToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ярлыкНаТранспортнуюТаруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.упаковочныйЛистToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.открытьБазуДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +53,8 @@ namespace EPCath_Marking
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.информационныйСтикерToolStripMenuItem,
             this.ярлыкНаТранспортнуюТаруToolStripMenuItem,
-            this.упаковочныйЛистToolStripMenuItem});
+            this.упаковочныйЛистToolStripMenuItem,
+            this.открытьБазуДанныхToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(62, 20);
             this.toolStripMenuItem1.Text = "Создать";
@@ -75,6 +77,13 @@ namespace EPCath_Marking
             this.упаковочныйЛистToolStripMenuItem.Name = "упаковочныйЛистToolStripMenuItem";
             this.упаковочныйЛистToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.упаковочныйЛистToolStripMenuItem.Text = "Упаковочный лист";
+            // 
+            // открытьБазуДанныхToolStripMenuItem
+            // 
+            this.открытьБазуДанныхToolStripMenuItem.Name = "открытьБазуДанныхToolStripMenuItem";
+            this.открытьБазуДанныхToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.открытьБазуДанныхToolStripMenuItem.Text = "Открыть базу данных";
+            this.открытьБазуДанныхToolStripMenuItem.Click += new System.EventHandler(this.открытьБазуДанныхToolStripMenuItem_Click);
             // 
             // StickerCreator
             // 
@@ -101,5 +110,6 @@ namespace EPCath_Marking
         private System.Windows.Forms.ToolStripMenuItem информационныйСтикерToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ярлыкНаТранспортнуюТаруToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem упаковочныйЛистToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem открытьБазуДанныхToolStripMenuItem;
     }
 }
