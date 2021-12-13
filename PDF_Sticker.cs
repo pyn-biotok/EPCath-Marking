@@ -46,8 +46,12 @@ namespace EPCath_Marking
                 d.SN = _SN.ToString();
                 QRImage = qr.QR_Generator(d);
 
-                CreatePDFListData(d.SN, QRImage);
-                pdfdoc.NewPage();
+                for (int j = 1; j <= 8; j++)
+                {
+                    CreatePDFListData(d.SN, QRImage);
+                    pdfdoc.NewPage();
+                }
+                                
                 _SN++;
 
             }

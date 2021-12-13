@@ -29,7 +29,6 @@ namespace EPCath_Marking
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Cath_StickerGenerate = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,8 +41,6 @@ namespace EPCath_Marking
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.Cath_FirstSN = new System.Windows.Forms.TextBox();
-            this.errorProviderLOT = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderLOT)).BeginInit();
             this.SuspendLayout();
             // 
             // Cath_StickerGenerate
@@ -75,7 +72,6 @@ namespace EPCath_Marking
             this.Cath_LOT.Name = "Cath_LOT";
             this.Cath_LOT.Size = new System.Drawing.Size(116, 22);
             this.Cath_LOT.TabIndex = 6;
-        
             this.Cath_LOT.MouseEnter += new System.EventHandler(this.Cath_LOT_MouseEnter);
             // 
             // Cath_REF
@@ -110,7 +106,6 @@ namespace EPCath_Marking
             this.label2.Size = new System.Drawing.Size(212, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Вариант исполнения катетера:";
-          
             // 
             // label4
             // 
@@ -130,8 +125,6 @@ namespace EPCath_Marking
             this.Cath_Date1.Name = "Cath_Date1";
             this.Cath_Date1.Size = new System.Drawing.Size(109, 20);
             this.Cath_Date1.TabIndex = 11;
-       
-           
             // 
             // Cath_QTY
             // 
@@ -140,7 +133,7 @@ namespace EPCath_Marking
             this.Cath_QTY.Name = "Cath_QTY";
             this.Cath_QTY.Size = new System.Drawing.Size(60, 22);
             this.Cath_QTY.TabIndex = 12;
-         
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -168,13 +161,6 @@ namespace EPCath_Marking
             this.Cath_FirstSN.Name = "Cath_FirstSN";
             this.Cath_FirstSN.Size = new System.Drawing.Size(51, 22);
             this.Cath_FirstSN.TabIndex = 15;
-         
-            // 
-            // errorProviderLOT
-            // 
-            this.errorProviderLOT.BlinkRate = 700;
-            this.errorProviderLOT.ContainerControl = this;
-            this.errorProviderLOT.Tag = "Faild!";
             // 
             // Form1
             // 
@@ -199,8 +185,6 @@ namespace EPCath_Marking
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EPCath Sticker Generator";
-         
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderLOT)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,7 +203,6 @@ namespace EPCath_Marking
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox Cath_FirstSN;
-        private System.Windows.Forms.ErrorProvider errorProviderLOT;
     }
 }
 
