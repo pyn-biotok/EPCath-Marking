@@ -82,7 +82,7 @@ namespace EPCath_Marking
                 Phrase c5 = new Phrase("   ");
 
                 Paragraph par3 = new Paragraph();
-                par3.SpacingBefore = -3.5f;
+                par3.SpacingBefore = -3.2f;
                 par3.SpacingAfter = spack;
                 par3.Add(c3);
                 par3.Add(c5);
