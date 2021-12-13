@@ -18,13 +18,17 @@ namespace EPCath_Marking
 
     public class PDF_Sticker
     {
-        public string disk = "E";
+       
         System.Drawing.Image QRImage;
 
-       public void PDF_Sticker_Creator(Data d, string QTY)
+        public static string DiskName = Environment.CurrentDirectory.ToString();
+
+     
+        public void PDF_Sticker_Creator(Data d, string QTY)
         {
+
             // прописываем путь и имя PDF файла для сохранения
-            string path = disk + ":/" + d.REF + "_" + d.DATA1 + ".pdf";
+            string path = DiskName + "/" +  d.REF + "_" + d.DATA1 + ".pdf";
 
             // тут короче создается PDF документ и вся херня
             Document pdfdoc = new Document(iTextSharp.text.PageSize.A4, 1, 1, 1, 1);
@@ -67,11 +71,11 @@ namespace EPCath_Marking
                 pdfdoc.Add(QRPic);
 
                 float spack = 2f;
-
-                Phrase c3 = new Phrase();
-                c3 = Pic_Text(disk + ":/SN.bmp", SN.ToString());
+                 
+        Phrase c3 = new Phrase();
+                c3 = Pic_Text(DiskName + "/SN.bmp", SN.ToString());
                 Phrase c4 = new Phrase();
-                c4 = Pic_Text(disk +":/LOT.bmp", d.LOT);
+                c4 = Pic_Text(DiskName + "/LOT.bmp", d.LOT);
 
                 Phrase c5 = new Phrase("   ");
 
@@ -85,7 +89,7 @@ namespace EPCath_Marking
 
 
                 Phrase c6 = new Phrase();
-                c6 = Pic_Text(disk + ":/REF.bmp", d.REF);
+                c6 = Pic_Text(DiskName + "/REF.bmp", d.REF);
                 Paragraph par4 = new Paragraph();
                 par4.SpacingBefore = spack;
                 par4.SpacingAfter = spack;
@@ -95,9 +99,9 @@ namespace EPCath_Marking
 
 
                 Phrase c1 = new Phrase();
-                c1 = Pic_Text(disk + ":/DATA1.bmp", d.DATA1);
+                c1 = Pic_Text(DiskName + "/DATA1.bmp", d.DATA1);
                 Phrase c2 = new Phrase();
-                c2 = Pic_Text(disk + ":/DATA2.bmp", d.DATA2);
+                c2 = Pic_Text(DiskName + "/DATA2.bmp", d.DATA2);
                 Phrase c7 = new Phrase("   ");
 
                 Paragraph par1 = new Paragraph();
@@ -111,47 +115,38 @@ namespace EPCath_Marking
 
 
 
-
-
-
-
-
-
-
-
             }
-
-
-
 
 
         }
 
 
-
-        Phrase Pic_Text(string path, string info)
+        Phrase Pic_Text(string path2, string info)
         {
-            iTextSharp.text.Image Pic = iTextSharp.text.Image.GetInstance(path);
-
-            switch (path)
+            
+              
+           string result = Path.GetFileName(path2);
+            iTextSharp.text.Image Pic = iTextSharp.text.Image.GetInstance(path2);
+            
+            switch (result)
             {
-                case "E:/LOT.bmp":
+                case "LOT.bmp":
                     Pic.ScaleAbsolute(15.5f, 11.2f);
                     break;
 
-                case "E:/REF.bmp":
+                case "REF.bmp":
                     Pic.ScaleAbsolute(15.5f, 11.2f);
                     break;
 
-                case "E:/SN.bmp":
+                case "SN.bmp":
                     Pic.ScaleAbsolute(15.5f, 11.2f);
                     break;
 
-                case "E:/DATA1.bmp":
+                case "DATA1.bmp":
                     Pic.ScaleAbsolute(12.6f, 12.6f);
                     break;
 
-                case "E:/DATA2.bmp":
+                case "DATA2.bmp":
                     Pic.ScaleAbsolute(10.1f, 13.8f);
                     break;
             }

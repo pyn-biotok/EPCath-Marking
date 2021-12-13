@@ -23,7 +23,13 @@ namespace EPCath_Marking
         public Form1()
         {
             InitializeComponent();
+      
           
+
+           
+      
+
+
         }
 
        
@@ -115,30 +121,12 @@ ToolTip t = new ToolTip();
            
         }
 
-        private void Cath_QTY_Validating(object sender, CancelEventArgs e)
-        {
-            if (Cath_QTY.Text.Length != 0)
-            {
-                progressBar1.PerformStep();
-            }
-            else progressBar1.Value -= progressBar1.Step;
-        }
+       
 
         private void Cath_Date1_ValueChanged(object sender, EventArgs e)
         {
 
         }
-
-        private void Cath_REF_Validating(object sender, CancelEventArgs e)
-        {
-            if (Cath_REF.Text.Length != 0)
-            {
-                
-                progressBar1.PerformStep();
-
-            }
-            else progressBar1.Step -= progressBar1.Step;
-
-        }
+       
     }
 }
