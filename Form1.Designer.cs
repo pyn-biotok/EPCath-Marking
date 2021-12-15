@@ -217,6 +217,7 @@ namespace EPCath_Marking
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "СОЕДИНИТЕЛЬНЫЙ КАБЕЛЬ";
             this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // radioButton5
             // 
@@ -228,6 +229,7 @@ namespace EPCath_Marking
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "BIOTOK ESOTEMP";
             this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 
             // radioButton6
             // 
@@ -245,7 +247,7 @@ namespace EPCath_Marking
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(270, 625);
+            this.ClientSize = new System.Drawing.Size(316, 625);
             this.Controls.Add(this.radioButton6);
             this.Controls.Add(this.radioButton5);
             this.Controls.Add(this.radioButton4);

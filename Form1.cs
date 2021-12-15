@@ -86,5 +86,27 @@ namespace EPCath_Marking
                 Cath_REF.Items.AddRange(new string[] { C });
             }
         }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            Cath_REF.Items.Clear();
+            List<string> ESOTEMP = new List<string>() { "ER9Q005N", "1W9Q005N", "2W9Q016S", "SEL9Q016S", "2W9O006S", "2W9Q016S-ST" };
+
+            foreach (string C in ESOTEMP)
+            {
+                Cath_REF.Items.AddRange(new string[] { C });
+            }
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            Cath_REF.Items.Clear();
+            List<string> cable = new List<string>() { "BIOTOK 06TR", "BIOTOK 10", "BIOTOK 10S", "BIOTOK 02", "BIOTOK 04", "BIOTOK 08TR", "BIOTOK 06ST" };
+
+            foreach (string C in cable)
+            {
+                Cath_REF.Items.AddRange(new string[] { C });
+            }
+        }
     }
 }
