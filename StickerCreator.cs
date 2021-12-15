@@ -15,7 +15,9 @@ namespace EPCath_Marking
         public StickerCreator()
         {
             InitializeComponent();
-        }
+            string a =  Environment.CurrentDirectory.ToString();
+            label1.Text = a;
+    }
 
         private void информационныйСтикерToolStripMenuItem_Click(object sender, EventArgs e)
         {

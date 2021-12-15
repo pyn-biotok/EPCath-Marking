@@ -35,6 +35,7 @@ namespace EPCath_Marking
             this.ярлыкНаТранспортнуюТаруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.упаковочныйЛистToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьБазуДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,12 +86,22 @@ namespace EPCath_Marking
             this.открытьБазуДанныхToolStripMenuItem.Text = "Открыть базу данных";
             this.открытьБазуДанныхToolStripMenuItem.Click += new System.EventHandler(this.открытьБазуДанныхToolStripMenuItem_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 57);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "label1";
+            // 
             // StickerCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "StickerCreator";
@@ -111,5 +122,6 @@ namespace EPCath_Marking
         private System.Windows.Forms.ToolStripMenuItem ярлыкНаТранспортнуюТаруToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem упаковочныйЛистToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem открытьБазуДанныхToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
     }
 }

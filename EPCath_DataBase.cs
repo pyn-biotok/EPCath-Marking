@@ -27,7 +27,7 @@ namespace EPCath_Marking
         {
             SQLiteConnection con = new SQLiteConnection("data source=C:/Users/Yakov/YandexDisk/My REPOSITORIES/EPCath_DataBases/EPCath.db");
             con.Open();
-            string query = "SELECT* from Listing";
+            string query = "SELECT* from Полный список";
             SQLiteCommand cmd = new SQLiteCommand(query, con);
             DataTable dt = new DataTable();
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);

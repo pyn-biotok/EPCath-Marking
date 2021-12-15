@@ -21,14 +21,14 @@ namespace EPCath_Marking
        
         System.Drawing.Image QRImage;
 
-        public string DiskName = Environment.CurrentDirectory.ToString();
+        public string disk = Environment.CurrentDirectory.ToString();
+       
 
-     
         public void PDF_Sticker_Creator(Data d, string QTY)
         {
 
             // прописываем путь и имя PDF файла для сохранения
-            string path = DiskName + "/" +  d.REF + "_" + d.DATA1 + ".pdf";
+            string path = disk + "/" +  d.REF + "_" + d.DATA1 + ".pdf";
 
             // тут короче создается PDF документ и вся херня
             Document pdfdoc = new Document(iTextSharp.text.PageSize.A4, 1, 1, 1, 1);
@@ -37,31 +37,27 @@ namespace EPCath_Marking
 
             pdfdoc.Open();
 
-            
+            // пошли костыли!!
             int i;
             int _SN = Int32.Parse(d.SN);
             for (i = 1; i <= Int32.Parse(QTY); i++)
             {
                 QR_Creator qr = new QR_Creator();
-                d.SN = _SN.ToString();
                 QRImage = qr.QR_Generator(d);
 
-                for (int j = 1; j <= 8; j++)
-                {
-                    CreatePDFListData(d.SN, QRImage);
-                    pdfdoc.NewPage();
-                }
-                                
+                CreatePDFListData(_SN, QRImage);
+                pdfdoc.NewPage();
                 _SN++;
 
             }
+
 
 
             pdfdoc.Close();
             System.Diagnostics.Process.Start(path);
 
 
-            void CreatePDFListData(string SN, System.Drawing.Image QRCode)
+            void CreatePDFListData(int SN, System.Drawing.Image QRCode)
             {
 
 
@@ -70,19 +66,21 @@ namespace EPCath_Marking
                 QRPic.ScaleAbsolute(40f, 40f);
                 QRPic.SetAbsolutePosition(pdfdoc.PageSize.Width - QRPic.Width + 35f, pdfdoc.PageSize.Height - QRPic.Height + 35f);
 
-                 pdfdoc.Add(QRPic);
+                // - QRPic.Width + 1f
+                // - QRPic.Height
+                pdfdoc.Add(QRPic);
 
                 float spack = 2f;
                  
-             Phrase c3 = new Phrase();
-                c3 = Pic_Text(DiskName + "/SN.bmp", SN.ToString());
+        Phrase c3 = new Phrase();
+                c3 = Pic_Text(disk + "/SN.bmp", SN.ToString());
                 Phrase c4 = new Phrase();
-                c4 = Pic_Text(DiskName + "/LOT.bmp", d.LOT);
+                c4 = Pic_Text(disk +"/LOT.bmp", d.LOT);
 
                 Phrase c5 = new Phrase("   ");
 
                 Paragraph par3 = new Paragraph();
-                par3.SpacingBefore = -3.2f;
+                par3.SpacingBefore = -3.5f;
                 par3.SpacingAfter = spack;
                 par3.Add(c3);
                 par3.Add(c5);
@@ -91,7 +89,7 @@ namespace EPCath_Marking
 
 
                 Phrase c6 = new Phrase();
-                c6 = Pic_Text(DiskName + "/REF.bmp", d.REF);
+                c6 = Pic_Text(disk + "/REF.bmp", d.REF);
                 Paragraph par4 = new Paragraph();
                 par4.SpacingBefore = spack;
                 par4.SpacingAfter = spack;
@@ -99,15 +97,16 @@ namespace EPCath_Marking
                 pdfdoc.Add(par4);
 
 
+
                 Phrase c1 = new Phrase();
-                c1 = Pic_Text(DiskName + "/DATA1.bmp", d.DATA1);
+                c1 = Pic_Text(disk + "/DATA1.bmp", d.DATA1);
                 Phrase c2 = new Phrase();
-                c2 = Pic_Text(DiskName + "/DATA2.bmp", d.DATA2);
+                c2 = Pic_Text(disk + "/DATA2.bmp", d.DATA2);
                 Phrase c7 = new Phrase("   ");
 
                 Paragraph par1 = new Paragraph();
                 par1.SpacingBefore = spack;
-                par1.SpacingAfter = -10;
+                par1.SpacingAfter = -6;
                 par1.Add(c1);
                 par1.Add(c7);
                 par1.Add(c2);
@@ -116,7 +115,10 @@ namespace EPCath_Marking
 
 
 
+
             }
+
+
 
 
         }
@@ -124,31 +126,29 @@ namespace EPCath_Marking
 
         Phrase Pic_Text(string path2, string info)
         {
-            
-              
-           string result = Path.GetFileName(path2);
+           
             iTextSharp.text.Image Pic = iTextSharp.text.Image.GetInstance(path2);
             
-            switch (result)
+            switch (path2)
             {
-                case "LOT.bmp":
-                    Pic.ScaleAbsolute(16.5f, 12.2f);
+                case "D:/Podskarbiy/YandexDisk/My REPOSITORIES/EPCath-Marking/EPCath-Marking/bin/Debug/LOT.bmp":
+                    Pic.ScaleAbsolute(15.5f, 11.2f);
                     break;
 
-                case "REF.bmp":
-                    Pic.ScaleAbsolute(16.5f, 12.2f);
+                case "D:/Podskarbiy/YandexDisk/My REPOSITORIES/EPCath-Marking/EPCath-Marking/bin/Debug/REF.bmp":
+                    Pic.ScaleAbsolute(15.5f, 11.2f);
                     break;
 
-                case "SN.bmp":
-                    Pic.ScaleAbsolute(16.5f, 12.2f);
+                case "D:/Podskarbiy/YandexDisk/My REPOSITORIES/EPCath-Marking/EPCath-Marking/bin/Debug/SN.bmp":
+                    Pic.ScaleAbsolute(15.5f, 11.2f);
                     break;
 
-                case "DATA1.bmp":
-                    Pic.ScaleAbsolute(13.6f, 13.6f);
+                case "D:/Podskarbiy/YandexDisk/My REPOSITORIES/EPCath-Marking/EPCath-Marking/bin/Debug/DATA1.bmp":
+                    Pic.ScaleAbsolute(12.6f, 12.6f);
                     break;
 
-                case "DATA2.bmp":
-                    Pic.ScaleAbsolute(11.1f, 14.8f);
+                case "D:/Podskarbiy/YandexDisk/My REPOSITORIES/EPCath-Marking/EPCath-Marking/bin/Debug/DATA2.bmp":
+                    Pic.ScaleAbsolute(10.1f, 13.8f);
                     break;
             }
 
@@ -157,7 +157,7 @@ namespace EPCath_Marking
 
             Chunk pic = new Chunk(Pic, 0, 0);
             Chunk tab = new Chunk(" ");
-            Chunk text = new Chunk(info, FontFactory.GetFont("arial", (float)7.2f, Font.UNDERLINE));
+            Chunk text = new Chunk(info, FontFactory.GetFont("arial", (float)7f, Font.UNDERLINE));
             Phrase PicText = new Phrase();
             PicText.Add(pic);
             PicText.Add(tab);

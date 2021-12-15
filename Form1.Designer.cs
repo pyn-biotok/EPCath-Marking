@@ -91,7 +91,10 @@ namespace EPCath_Marking
             "ABL.SM75Q252N4",
             "ABL.SL75Q252N4",
             "ABL.SM75Q252J35",
-            "IRR 001"});
+            "IRR 001",
+            "685611.013-06ST",
+            "685611.013-08TR",
+            "1W9Q005S"});
             this.Cath_REF.Location = new System.Drawing.Point(6, 38);
             this.Cath_REF.Name = "Cath_REF";
             this.Cath_REF.Size = new System.Drawing.Size(209, 24);
