@@ -118,6 +118,21 @@
       <DependentUpon>StickerCreator.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Data.datasource" />
+    <None Include="Properties\DataSources\DataChecking.datasource" />
+    <None Include="Properties\DataSources\EPCath_DataBase.datasource" />
+    <None Include="Properties\DataSources\Form1.datasource" />
+    <None Include="Properties\DataSources\PDF_Sticker.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
+    <None Include="Properties\DataSources\QR_Creator.datasource" />
+    <None Include="Properties\DataSources\StickerCreator.datasource" />
+    <None Include="Properties\DataSources\System.Data.Entity.SqlServer.SqlAzureExecutionStrategy.datasource" />
+    <None Include="Properties\DataSources\System.Data.Entity.SqlServer.SqlFunctions.datasource" />
+    <None Include="Properties\DataSources\System.Data.Entity.SqlServer.SqlHierarchyIdFunctions.datasource" />
+    <None Include="Properties\DataSources\System.Data.Entity.SqlServer.SqlProviderServices.datasource" />
+    <None Include="Properties\DataSources\System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.datasource" />
+    <None Include="Properties\DataSources\System.Data.Entity.SqlServer.SqlSpatialFunctions.datasource" />
+    <None Include="Properties\DataSources\System.Data.Entity.SqlServer.SqlSpatialServices.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -138,6 +153,9 @@
     <Content Include="Resources\QR.BMP" />
     <Content Include="Resources\REF.bmp" />
     <Content Include="Resources\SN.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

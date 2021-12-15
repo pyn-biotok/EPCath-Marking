@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using iTextSharp.text;
+//using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
 using System.Diagnostics;
@@ -61,7 +61,30 @@ namespace EPCath_Marking
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
+            Cath_REF.Items.Clear();
+            List<string> DIA = new List<string>() { "DIA.CO6Q005N", "DIA.JO6Q005N", "DIA.CS6D252N" };
 
+            foreach (string C in DIA)
+            {
+                
+                Cath_REF.Items.AddRange(new string[] { C });
+            }
+        }
+
+        private void Cath_REF_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            Cath_REF.Items.Clear();
+            List<string> ABL = new List<string>() { "ABL.SS6Q252N4", "ABL.SM6Q252N4", "ABL.SL6Q252N4", "ABL.SM75Q252N4", "ABL.SL75Q252N4", "ABL.SM75Q252J35" };
+
+            foreach (string C in ABL)
+            {
+                Cath_REF.Items.AddRange(new string[] { C });
+            }
         }
     }
 }

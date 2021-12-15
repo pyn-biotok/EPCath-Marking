@@ -53,9 +53,9 @@ namespace EPCath_Marking
             // Cath_StickerGenerate
             // 
             this.Cath_StickerGenerate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.Cath_StickerGenerate.Location = new System.Drawing.Point(12, 517);
+            this.Cath_StickerGenerate.Location = new System.Drawing.Point(15, 517);
             this.Cath_StickerGenerate.Name = "Cath_StickerGenerate";
-            this.Cath_StickerGenerate.Size = new System.Drawing.Size(196, 62);
+            this.Cath_StickerGenerate.Size = new System.Drawing.Size(178, 62);
             this.Cath_StickerGenerate.TabIndex = 0;
             this.Cath_StickerGenerate.Text = "СОЗДАТЬ СТИКЕР";
             this.Cath_StickerGenerate.UseVisualStyleBackColor = false;
@@ -89,27 +89,12 @@ namespace EPCath_Marking
             this.Cath_REF.ForeColor = System.Drawing.Color.Black;
             this.Cath_REF.FormattingEnabled = true;
             this.Cath_REF.Items.AddRange(new object[] {
-            "DIA CS6D252N",
-            "DIA.CO6Q005N",
-            "DIA.JO6Q005N",
-            "ABL.SS6Q252N4",
-            "ABL.SM6Q252N4",
-            "ABL.SL6Q252N4",
-            "ABL.SM75Q252N4",
-            "ABL.SL75Q252N4",
-            "ABL.SM75Q252J35",
-            "IRR 001",
-            "685611.013-06ST",
-            "685611.013-08TR",
-            "1W9Q005S",
-            "2W9O006S",
-            "2W9Q016S",
-            "2W9Q016S-ST",
-            "ER9Q005N"});
+            "DIA.CO6Q005N"});
             this.Cath_REF.Location = new System.Drawing.Point(12, 181);
             this.Cath_REF.Name = "Cath_REF";
             this.Cath_REF.Size = new System.Drawing.Size(181, 24);
             this.Cath_REF.TabIndex = 9;
+            this.Cath_REF.SelectedIndexChanged += new System.EventHandler(this.Cath_REF_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -209,6 +194,7 @@ namespace EPCath_Marking
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "BIOTOK ABL";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton3
             // 
@@ -259,7 +245,7 @@ namespace EPCath_Marking
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(227, 625);
+            this.ClientSize = new System.Drawing.Size(270, 625);
             this.Controls.Add(this.radioButton6);
             this.Controls.Add(this.radioButton5);
             this.Controls.Add(this.radioButton4);
