@@ -74,6 +74,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CatheterParam.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="DataChecking.cs" />
     <Compile Include="EPCath_DataBase.cs">
