@@ -94,7 +94,8 @@ namespace EPCath_Marking
             "IRR 001",
             "685611.013-06ST",
             "685611.013-08TR",
-            "1W9Q005S"});
+            "1W9Q005S",
+            "2W9O006S"});
             this.Cath_REF.Location = new System.Drawing.Point(6, 38);
             this.Cath_REF.Name = "Cath_REF";
             this.Cath_REF.Size = new System.Drawing.Size(209, 24);
