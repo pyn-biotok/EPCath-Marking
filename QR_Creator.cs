@@ -13,7 +13,7 @@ namespace EPCath_Marking
         public System.Drawing.Image QRImage;
 
 
-        public System.Drawing.Image QR_Generator(Data d)
+        public System.Drawing.Image QR_Generator(CatheterInfo d)
         {
            
 

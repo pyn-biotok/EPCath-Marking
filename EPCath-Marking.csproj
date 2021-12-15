@@ -75,7 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CatheterParam.cs" />
-    <Compile Include="Data.cs" />
+    <Compile Include="CatheterInfo.cs" />
     <Compile Include="DataChecking.cs" />
     <Compile Include="EPCath_DataBase.cs">
       <SubType>Form</SubType>

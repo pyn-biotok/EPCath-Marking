@@ -37,7 +37,7 @@ namespace EPCath_Marking
         string Cath_Data2 = data2.Month.ToString() + "." + data2.Year.ToString();
 
             // создаем объект Data, там хранятся все даныне на конкретный лист стикера
-        Data data = new Data(Cath_FirstSN.Text, Cath_LOT.Text, Cath_REF.Text, Cath_Date1.Text, Cath_Data2);
+        CatheterInfo data = new CatheterInfo(Cath_FirstSN.Text, Cath_LOT.Text, Cath_REF.Text, Cath_Date1.Text, Cath_Data2);
                           
             // создаем страницу (стикер) PDF документа
         PDF_Sticker stick = new PDF_Sticker();

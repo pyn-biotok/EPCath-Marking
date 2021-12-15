@@ -24,7 +24,7 @@ namespace EPCath_Marking
         public string DiskName = Environment.CurrentDirectory.ToString();
 
      
-        public void PDF_Sticker_Creator(Data d, string QTY)
+        public void PDF_Sticker_Creator(CatheterInfo d, string QTY)
         {
 
             // прописываем путь и имя PDF файла для сохранения

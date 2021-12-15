@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace EPCath_Marking
 {
-   public class Data
+   public class CatheterInfo
     {
         public string LOT, REF, SN, DATA1, DATA2;
        
 
-        public Data(string _SN, string _LOT, string _REF, string _DATA1, string _DATA2)
+        public CatheterInfo(string _SN, string _LOT, string _REF, string _DATA1, string _DATA2)
         {
             LOT = _LOT;
             SN = _SN;
